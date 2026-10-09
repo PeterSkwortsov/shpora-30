@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30 проектов для Кванториума | добро.рф</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-dark: #1e40af;
+    --accent: #f59e0b;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --social: #10b981;
+    --tech: #8b5cf6;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+  }
+
+  header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+
+  header p {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    opacity: 0.95;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--card);
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot-social { background: var(--social); }
+  .dot-tech { background: var(--tech); }
+
+  .table-wrap {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  thead {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  th {
+    padding: 18px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  th:first-child { width: 50px; text-align: center; }
+  th:nth-child(2) { width: 25%; }
+  th:nth-child(3) { width: 30%; }
+  th:nth-child(4) { width: 35%; }
+
+  td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  tbody tr {
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover {
+    background: #f1f5f9;
+  }
+
+  .num {
+    text-align: center;
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+  }
+
+  .problem {
+    font-weight: 500;
+    color: var(--text);
+    border-left: 3px solid var(--accent);
+    padding-left: 12px;
+  }
+
+  .idea {
+    color: var(--text);
+  }
+
+  .idea strong {
+    color: var(--primary-dark);
+  }
+
+  .step {
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+
+  .step strong {
+    color: var(--text);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .tag-social {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .tag-tech {
+    background: #ede9fe;
+    color: #5b21b6;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  /* Мобильная версия — карточки */
+  @media (max-width: 900px) {
+    body { padding: 10px; }
+
+    header { padding: 25px 15px; border-radius: 12px; }
+
+    thead { display: none; }
+
+    table, tbody, tr, td {
+      display: block;
+      width: 100%;
+    }
+
+    tbody tr {
+      background: var(--card);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      padding: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      border: 1px solid var(--border);
+    }
+
+    tbody tr:hover { background: var(--card); }
+
+    td {
+      border: none;
+      padding: 10px 12px;
+      position: relative;
+    }
+
+    td::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-light);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .num {
+      text-align: left;
+      font-size: 1.3rem;
+      color: var(--primary);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .num::before { display: none; }
+
+    .problem { border-left: 3px solid var(--accent); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🚀 30 проектов для «Кванториума»</h1>
+    <p>Социальные и технические идеи на основе платформы добро.рф. От проблемы — к простому первому шагу, доступному каждому школьнику.</p>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item"><span class="dot dot-social"></span> Социальный проект</div>
+    <div class="legend-item"><span class="dot dot-tech"></span> Технический проект</div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>№</th>
+          <th>Проблема</th>
+          <th>Идея</th>
+          <th>Первый шаг</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr>
+          <td class="num" data-label="№">1</td>
+          <td class="problem" data-label="Проблема">Пожилые люди забывают вовремя принимать лекарства.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Умная таблетница»</strong>: устройство с таймером и сигналом.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать на бумаге</strong>, как выглядит таблетница, и отметить, где будет кнопка, экран и отсеки для таблеток.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">2</td>
+          <td class="problem" data-label="Проблема">Слабовидящим детям сложно изучать географию по плоским картам.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Тактильные учебные пособия»</strong>: рельефные 3D-модели.</td>
+          <td class="step" data-label="Первый шаг"><strong>Слепить из пластилина</strong> простую горку с рекой и проверить на ощупь с закрытыми глазами — удобно ли это.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">3</td>
+          <td class="problem" data-label="Проблема">Инвалидам-колясочникам трудно очищать колёса коляски.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Щётка-очиститель для колёс»</strong>: насадка с вращающимися щётками.</td>
+          <td class="step" data-label="Первый шаг"><strong>Найти в интернете</strong> фото похожих щёток и нарисовать эскиз крепления на колесо.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">4</td>
+          <td class="problem" data-label="Проблема">Одинокие пожилые люди чувствуют себя забытыми.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Цифровое волонтёрство»</strong>: школьники учат пенсионеров смартфону.</td>
+          <td class="step" data-label="Первый шаг"><strong>Составить список из 3 действий</strong>, которым можно научить бабушку или дедушку (например, видеозвонок).</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">5</td>
+          <td class="problem" data-label="Проблема">В городских водоёмах скапливается мусор.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Акваробот-мусоросборщик»</strong>: плавающий робот с сеткой.</td>
+          <td class="step" data-label="Первый шаг"><strong>Сделать макет из пенопласта</strong> и пластиковой бутылки, проверить, держится ли он на воде.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">6</td>
+          <td class="problem" data-label="Проблема">Дети с нарушениями слуха не слышат пожарную тревогу.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Вибро-браслет»</strong>: преобразует громкий звук в вибрацию.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать браслет</strong> и подумать, где будет вибромоторчик, а где — кнопка включения.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">7</td>
+          <td class="problem" data-label="Проблема">Незрячие люди не могут ориентироваться в незнакомом помещении.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Умный помощник»</strong>: устройство с датчиком препятствий.</td>
+          <td class="step" data-label="Первый шаг"><strong>Собрать простую цепь</strong>: батарейка, лампочка и кнопка — понять, как работает включение сигнала.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">8</td>
+          <td class="problem" data-label="Проблема">В приютах для животных не хватает автоматических кормушек.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Автокормушка»</strong>: выдаёт корм по таймеру.</td>
+          <td class="step" data-label="Первый шаг"><strong>Сделать макет из картонной коробки</strong> с крышкой, которая открывается.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">9</td>
+          <td class="problem" data-label="Проблема">Школьники не знают, как сортировать мусор.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Игровой автомат для сортировки крышечек»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Провести мини-опрос</strong> среди одноклассников: какие крышечки они чаще выбрасывают и куда?</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">10</td>
+          <td class="problem" data-label="Проблема">В школьных коридорах гости не могут найти нужный кабинет.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Робот-навигатор»</strong>: провожает до нужной точки.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать план этажа</strong> и отметить на нём маршрут от входа до кабинета.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">11</td>
+          <td class="problem" data-label="Проблема">Дети из детских домов не знакомы с 3D-технологиями.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Мастер-класс по 3D-моделированию»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Сделать простую 3D-модель</strong> (кубик или машинку) в бесплатной программе Tinkercad.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">12</td>
+          <td class="problem" data-label="Проблема">Зимой птицам не хватает корма, а кормушки неудобны.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Конструктор кормушек»</strong> из 3D-деталей.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать эскиз кормушки</strong>, которую можно собрать без клея (например, из палочек от мороженого).</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">13</td>
+          <td class="problem" data-label="Проблема">В сельских школах нет оборудования для опытов.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Мобильная лаборатория на Arduino»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Найти в интернете</strong> простой проект «термометр на Arduino» и записать, какие детали нужны.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">14</td>
+          <td class="problem" data-label="Проблема">Ветеранам нужна помощь по дому.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Ветеран живёт рядом»</strong>: волонтёрская акция.</td>
+          <td class="step" data-label="Первый шаг"><strong>Поговорить с родителями</strong> и узнать, есть ли среди знакомых пожилой человек, которому нужна помощь.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">15</td>
+          <td class="problem" data-label="Проблема">Люди с нарушениями речи не могут позвать на помощь.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Кнопка экстренного вызова»</strong>: отправляет SMS.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать большую красную кнопку</strong> и подумать, как её закрепить на одежде.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">16</td>
+          <td class="problem" data-label="Проблема">В школах проблема буллинга, жертвы не знают, куда обратиться.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Анонимный чат-бот поддержки»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Написать 3 вопроса</strong>, которые чаще всего задают жертвы буллинга, и 3 ответа-совета.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">17</td>
+          <td class="problem" data-label="Проблема">Люди с аллергией не знают уровень пыльцы в воздухе.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Пыльцевой монитор»</strong>: показывает уровень опасности.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать светофор</strong> из трёх кругов (зелёный, жёлтый, красный) и подписать, что они означают.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">18</td>
+          <td class="problem" data-label="Проблема">В приютах не хватает тёплых подстилок.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Ресайклинг текстиля»</strong>: переработка ткани в лежанки.</td>
+          <td class="step" data-label="Первый шаг"><strong>Принести из дома</strong> ненужную футболку и сделать из неё простую лежанку для игрушки.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">19</td>
+          <td class="problem" data-label="Проблема">Пожилые люди с деменцией могут потеряться.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«GPS-браслет»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать браслет</strong> и подписать, где будет кнопка «SOS».</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">20</td>
+          <td class="problem" data-label="Проблема">Младшие школьники не знают ПДД.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Интерактивный светофор для школы»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Сделать макет светофора из картона</strong> с тремя кружками и показать, как он переключается.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">21</td>
+          <td class="problem" data-label="Проблема">Фермеры не могут быстро проверить качество воды.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Портативный анализатор воды»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Взять два стакана воды</strong> (чистой и с землёй) и сравнить их на глаз.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">22</td>
+          <td class="problem" data-label="Проблема">Дети в больницах скучают.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«VR-экскурсии для пациентов»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Сделать панорамный снимок</strong> своей комнаты на телефон и посмотреть его в режиме 360°.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">23</td>
+          <td class="problem" data-label="Проблема">Бездомным животным нужны средства.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Фандрайзинг через мерч»</strong>: продажа 3D-брелоков.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать эскиз брелока</strong> с символом приюта (например, лапка) на бумаге.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">24</td>
+          <td class="problem" data-label="Проблема">Школьники не знают, как вести себя при пожаре.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«VR-тренажёр по пожарной безопасности»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать план эвакуации</strong> из класса и отметить выходы и огнетушитель.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">25</td>
+          <td class="problem" data-label="Проблема">В отдалённых посёлках нет связи для экстренных служб.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Автономный ретранслятор»</strong> на LoRa.</td>
+          <td class="step" data-label="Первый шаг"><strong>Найти в интернете</strong>, что такое LoRa, и записать 2–3 примера, где это используют.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">26</td>
+          <td class="problem" data-label="Проблема">Незрячие ученики не могут читать обычные учебники.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Аудио-сканер текста»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Сфотографировать страницу учебника</strong> и распознать текст в бесплатном приложении на телефоне.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">27</td>
+          <td class="problem" data-label="Проблема">В жарких классах нет кондиционеров.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Умное проветривание»</strong>: автоматически открывает форточку.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать схему</strong>, как сервопривод будет поворачивать ручку форточки.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">28</td>
+          <td class="problem" data-label="Проблема">Людям с ограниченной подвижностью трудно поливать растения.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Автополив»</strong>: горшок с датчиком влажности.</td>
+          <td class="step" data-label="Первый шаг"><strong>Понаблюдать за комнатным растением</strong>: как часто его нужно поливать, и записать это в дневник.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">29</td>
+          <td class="problem" data-label="Проблема">В школах много старых компьютеров, которые не используются.<span class="tag tag-social">соц</span></td>
+          <td class="idea" data-label="Идея"><strong>«Рефурбишмент техники»</strong>: восстановление ПК для нуждающихся.</td>
+          <td class="step" data-label="Первый шаг"><strong>Найти один списанный компьютер</strong> (или его части) и узнать, можно ли его включить.</td>
+        </tr>
+
+        <tr>
+          <td class="num" data-label="№">30</td>
+          <td class="problem" data-label="Проблема">Жители городов не знают уровень загрязнения воздуха.<span class="tag tag-tech">тех</span></td>
+          <td class="idea" data-label="Идея"><strong>«Сеть городских эко-датчиков»</strong>.</td>
+          <td class="step" data-label="Первый шаг"><strong>Нарисовать карту своего района</strong> и отметить места, где чаще всего бывает много машин.</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>📚 Источник идей: платформа <a href="https://добро.рф" target="_blank">добро.рф</a> и проекты российских «Кванториумов»</p>
+    <p style="margin-top: 8px;">Таблица подготовлена для школьников — от простого шага к большому проекту 🚀</p>
+  </footer>
+
+</div>
+</body>
+</html>
